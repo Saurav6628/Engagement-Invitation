@@ -41,7 +41,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin-bottom: 20px;
 }
 
 .name {
@@ -49,18 +48,6 @@ body {
     font-size: 40px;
     cursor: pointer;
     transition: all 0.4s ease;
-    position: relative;
-}
-
-.name:hover {
-    color: #b89b5e;
-}
-
-.details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease;
-    font-size: 16px;
 }
 
 .name.active {
@@ -68,12 +55,14 @@ body {
     transform: scale(1.1);
 }
 
-.name.active + .details {
-    max-height: 80px;
+.details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
 }
 
-.heart {
-    font-size: 30px;
+.name.active + .details {
+    max-height: 80px;
 }
 
 .section {
@@ -81,11 +70,11 @@ body {
 }
 
 .card {
-    display: inline-block;
     padding: 20px 30px;
     border: 1px solid #e0cfa0;
     border-radius: 12px;
     background: rgba(255,255,255,0.75);
+    display: inline-block;
 }
 
 .footer {
@@ -93,7 +82,7 @@ body {
     font-size: 15px;
 }
 
-/* Floating hearts */
+/* Heart animation */
 .heart-balloon {
     position: fixed;
     font-size: 24px;
@@ -103,6 +92,133 @@ body {
 }
 
 @keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-160px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .names {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" src="bg-music.mp3" loop></audio>
+
+<div class="container">
+
+    <div class="divine">With the Divine Grace of Lord Ganesha</div>
+
+    <div class="hosts">
+        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br/>
+        request your gracious presence at the engagement ceremony of their loving grandson
+    </div>
+
+    <div class="names">
+        <div>
+            <div class="name" onclick="toggle(this)">Saurav Gupta</div>
+            <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
+        </div>
+
+        <div style="font-size:30px;">❤️</div>
+
+        <div>
+            <div class="name" onclick="toggle(this)">Adharika Gupta</div>
+            <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>Save the Date</strong><br><br>
+            Monday, 2nd February 2026<br>
+            6:00 PM
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>Venue</strong><br><br>
+            Hotel Pleasant View<br>
+            Manika Cinema Road, Gandhi Nagar, Raebareli
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>R.S.V.P.</strong><br><br>
+            Gupta Family<br>
+            Mob: 98054-41823, 98164-23371
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Compliments From</strong><br>
+        Sh. Kishori Lal Gupta<br>
+        Sh. Suresh Chand Gupta<br>
+        Mr. Gaurav Gupta<br>
+        Mr. Uday Gupta
+    </div>
+
+</div>
+
+<script>
+let musicStarted = false;
+const bgMusic = document.getElementById("bgMusic");
+const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
+
+function toggle(el) {
+    el.classList.toggle("active");
+}
+
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.volume = 0.4;
+        bgMusic.play();
+        musicStarted = true;
+    }
+}
+
+function createHeart(x, y) {
+    const heart = document.createElement("div");
+    heart.className = "heart-balloon";
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3500);
+}
+
+document.addEventListener("click", e => {
+    startMusic();
+    createHeart(e.clientX, e.clientY);
+});
+
+document.addEventListener("touchstart", e => {
+    startMusic();
+    const t = e.touches[0];
+    createHeart(t.clientX, t.clientY);
+});
+</script>
+
+</body>
+</html>@keyframes floatUp {
     0% {
         transform: translateY(0) scale(1);
         opacity: 1;
