@@ -14,6 +14,7 @@ body {
     background: linear-gradient(#fffaf0, #fdf6e3);
     color: #4a3b2c;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .container {
@@ -38,6 +39,7 @@ body {
 .names {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 40px;
     margin-bottom: 20px;
 }
@@ -72,7 +74,6 @@ body {
 
 .heart {
     font-size: 30px;
-    align-self: center;
 }
 
 .section {
@@ -84,12 +85,32 @@ body {
     padding: 20px 30px;
     border: 1px solid #e0cfa0;
     border-radius: 12px;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.75);
 }
 
 .footer {
     margin-top: 60px;
     font-size: 15px;
+}
+
+/* Floating hearts */
+.heart-balloon {
+    position: fixed;
+    font-size: 24px;
+    animation: floatUp 2.5s ease-out forwards;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-160px) scale(1.5);
+        opacity: 0;
+    }
 }
 
 @keyframes fadeIn {
@@ -100,13 +121,14 @@ body {
 @media (max-width: 600px) {
     .names {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
     }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
     <div class="divine">
@@ -169,6 +191,28 @@ body {
 <script>
 function toggle(element) {
     element.classList.toggle("active");
+}
+
+const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
+
+document.addEventListener("click", function(e) {
+    createHeart(e.clientX, e.clientY);
+});
+
+document.addEventListener("touchstart", function(e) {
+    const touch = e.touches[0];
+    createHeart(touch.clientX, touch.clientY);
+});
+
+function createHeart(x, y) {
+    const heart = document.createElement("div");
+    heart.className = "heart-balloon";
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2500);
 }
 </script>
 
