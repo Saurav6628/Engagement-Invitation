@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Engagement Invitation | Saurav & Adharika</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(#fffaf0, #fdf6e3);
+    color: #4a3b2c;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.divine {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease;
+}
+
+.hosts {
+    font-size: 18px;
+    margin-bottom: 50px;
+    animation: fadeIn 2.5s ease;
+}
+
+.names {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.name {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.name:hover {
+    color: #b89b5e;
+}
+
+.details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    font-size: 16px;
+}
+
+.name.active {
+    color: #b89b5e;
+    transform: scale(1.1);
+}
+
+.name.active + .details {
+    max-height: 80px;
+}
+
+.heart {
+    font-size: 30px;
+    align-self: center;
+}
+
+.section {
+    margin: 50px 0;
+}
+
+.card {
+    display: inline-block;
+    padding: 20px 30px;
+    border: 1px solid #e0cfa0;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.7);
+}
+
+.footer {
+    margin-top: 60px;
+    font-size: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .names {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="divine">
+        With the Divine Grace of Lord Ganesha
+    </div>
+
+    <div class="hosts">
+        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br/>
+        request your gracious presence at the engagement ceremony of their loving grandson
+    </div>
+
+    <div class="names">
+        <div>
+            <div class="name" onclick="toggle(this)">Saurav</div>
+            <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
+        </div>
+
+        <div class="heart">❤️</div>
+
+        <div>
+            <div class="name" onclick="toggle(this)">Adharika</div>
+            <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>Save the Date</strong><br/><br/>
+            Monday, 2nd February 2026<br/>
+            6:00 PM
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>Venue</strong><br/><br/>
+            Hotel Pleasant View<br/>
+            Manika Cinema Road, Gandhi Nagar, Raebareli
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>R.S.V.P.</strong><br/><br/>
+            Gupta Family<br/>
+            Mob: 98054-41823, 98164-23371
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Compliments From</strong><br/>
+        Sh. Kishori Lal Gupta<br/>
+        Sh. Suresh Chand Gupta<br/>
+        Mr. Gaurav Gupta<br/>
+        Mr. Uday Gupta
+    </div>
+
+</div>
+
+<script>
+function toggle(element) {
+    element.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
