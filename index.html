@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engagement Invitation | Saurav & Adharika</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
@@ -59,6 +59,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.6s ease;
+    font-size: 16px;
 }
 
 .name.active + .details {
@@ -82,7 +83,7 @@ body {
     font-size: 15px;
 }
 
-/* Heart animation */
+/* Floating hearts */
 .heart-balloon {
     position: fixed;
     font-size: 24px;
@@ -119,27 +120,29 @@ body {
 <body>
 
 <!-- Background Music -->
-<audio id="bgMusic" src="bg-music.mp3" loop></audio>
+<audio id="bgMusic" src="bg-music.mp3" preload="auto" loop></audio>
 
 <div class="container">
 
-    <div class="divine">With the Divine Grace of Lord Ganesha</div>
+    <div class="divine">
+        With the Divine Grace of Lord Ganesha
+    </div>
 
     <div class="hosts">
-        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br/>
+        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br>
         request your gracious presence at the engagement ceremony of their loving grandson
     </div>
 
     <div class="names">
         <div>
-            <div class="name" onclick="toggle(this)">Saurav Gupta</div>
+            <div class="name" onclick="toggleName(this)">Saurav Gupta</div>
             <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
         </div>
 
         <div style="font-size:30px;">❤️</div>
 
         <div>
-            <div class="name" onclick="toggle(this)">Adharika Gupta</div>
+            <div class="name" onclick="toggleName(this)">Adharika Gupta</div>
             <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
         </div>
     </div>
@@ -183,14 +186,14 @@ let musicStarted = false;
 const bgMusic = document.getElementById("bgMusic");
 const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
 
-function toggle(el) {
+function toggleName(el) {
     el.classList.toggle("active");
 }
 
 function startMusic() {
     if (!musicStarted) {
         bgMusic.volume = 0.4;
-        bgMusic.play();
+        bgMusic.play().catch(() => {});
         musicStarted = true;
     }
 }
@@ -202,7 +205,7 @@ function createHeart(x, y) {
     heart.style.left = x + "px";
     heart.style.top = y + "px";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 3500);
+    setTimeout(() => heart.remove(), 2500);
 }
 
 document.addEventListener("click", e => {
@@ -215,121 +218,6 @@ document.addEventListener("touchstart", e => {
     const t = e.touches[0];
     createHeart(t.clientX, t.clientY);
 });
-</script>
-
-</body>
-</html>@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-160px) scale(1.5);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-    .names {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <div class="divine">
-        With the Divine Grace of Lord Ganesha
-    </div>
-
-    <div class="hosts">
-        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br/>
-        request your gracious presence at the engagement ceremony of their loving grandson
-    </div>
-
-    <div class="names">
-        <div>
-            <div class="name" onclick="toggle(this)">Saurav Gupta</div>
-            <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
-        </div>
-
-        <div class="heart">❤️</div>
-
-        <div>
-            <div class="name" onclick="toggle(this)">Adharika Gupta</div>
-            <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <strong>Save the Date</strong><br/><br/>
-            Monday, 2nd February 2026<br/>
-            6:00 PM
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <strong>Venue</strong><br/><br/>
-            Hotel Pleasant View<br/>
-            Manika Cinema Road, Gandhi Nagar, Raebareli
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <strong>R.S.V.P.</strong><br/><br/>
-            Gupta Family<br/>
-            Mob: 98054-41823, 98164-23371
-        </div>
-    </div>
-
-    <div class="footer">
-        <strong>Compliments From</strong><br/>
-        Sh. Kishori Lal Gupta<br/>
-        Sh. Suresh Chand Gupta<br/>
-        Mr. Gaurav Gupta<br/>
-        Mr. Uday Gupta
-    </div>
-
-</div>
-
-<script>
-function toggle(element) {
-    element.classList.toggle("active");
-}
-
-const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
-
-document.addEventListener("click", function(e) {
-    createHeart(e.clientX, e.clientY);
-});
-
-document.addEventListener("touchstart", function(e) {
-    const touch = e.touches[0];
-    createHeart(touch.clientX, touch.clientY);
-});
-
-function createHeart(x, y) {
-    const heart = document.createElement("div");
-    heart.className = "heart-balloon";
-    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-    heart.style.left = x + "px";
-    heart.style.top = y + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 2500);
-}
 </script>
 
 </body>
