@@ -41,41 +41,31 @@ body {
     justify-content: center;
     align-items: center;
     gap: 40px;
+    margin-bottom: 20px;
 }
 
 .name {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.name.active {
-    color: #b89b5e;
-    transform: scale(1.1);
+    color: #5a4a3a;
 }
 
 .details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease;
     font-size: 16px;
-}
-
-.name.active + .details {
-    max-height: 80px;
+    margin-top: 6px;
 }
 
 .section {
-    margin: 50px 0;
+    margin: 45px 0;
 }
 
 .card {
     padding: 20px 30px;
     border: 1px solid #e0cfa0;
-    border-radius: 12px;
+    border-radius: 14px;
     background: rgba(255,255,255,0.75);
     display: inline-block;
+    min-width: 260px;
 }
 
 .footer {
@@ -111,7 +101,7 @@ body {
 @media (max-width: 600px) {
     .names {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
     }
 }
 </style>
@@ -122,18 +112,14 @@ body {
 <!-- Background Music -->
 <audio id="bgMusic" src="bg-music.mp3" loop></audio>
 
-<!-- Tap to Start Overlay -->
+<!-- Start Overlay -->
 <div id="startOverlay">
-    <div class="overlay-text">
-        Tap anywhere to start the invitation
-    </div>
+    <div class="overlay-box">Tap to begin the invitation</div>
 </div>
 
-<div class="container" style="display:none;" id="mainContent">
+<div class="container" id="mainContent" style="display:none;">
 
-    <div class="divine">
-        With the Divine Grace of Lord Ganesha
-    </div>
+    <div class="divine">With the Divine Grace of Lord Ganesha</div>
 
     <div class="hosts">
         <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br>
@@ -142,19 +128,52 @@ body {
 
     <div class="names">
         <div>
-            <div class="name" onclick="toggleName(this)">Saurav Gupta</div>
+            <div class="name">Saurav Gupta</div>
             <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
         </div>
 
-        <div style="font-size:30px;">❤️</div>
+        <div style="font-size:28px;">❤️</div>
 
         <div>
-            <div class="name" onclick="toggleName(this)">Adharika Gupta</div>
+            <div class="name">Adharika Gupta</div>
             <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
         </div>
     </div>
 
-    <!-- Rest of your content unchanged -->
+    <div class="section">
+        <div class="card">
+            <strong>Save the Date</strong><br><br>
+            Monday, 2nd February 2026<br>
+            6:00 PM
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>Venue</strong><br><br>
+            Hotel Pleasant View<br>
+            Manika Cinema Road,<br>
+            Gandhi Nagar, Raebareli
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <strong>R.S.V.P.</strong><br><br>
+            Gupta Family<br>
+            Mob: 98054-41823<br>
+            98164-23371
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Compliments From</strong><br>
+        Sh. Kishori Lal Gupta<br>
+        Sh. Suresh Chand Gupta<br>
+        Mr. Gaurav Gupta<br>
+        Mr. Uday Gupta
+    </div>
+
 </div>
 
 <script>
@@ -165,19 +184,12 @@ const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
 let started = false;
 
 overlay.addEventListener("click", () => {
-    if (!started) {
-        bgMusic.volume = 0.4;
-        bgMusic.play();   // DIRECT user gesture
-        started = true;
-
-        overlay.style.display = "none";
-        main.style.display = "block";
-    }
+    bgMusic.volume = 0.4;
+    bgMusic.play();
+    started = true;
+    overlay.style.display = "none";
+    main.style.display = "block";
 });
-
-function toggleName(el) {
-    el.classList.toggle("active");
-}
 
 document.addEventListener("click", e => {
     if (!started) return;
@@ -204,15 +216,15 @@ document.addEventListener("click", e => {
     z-index: 10000;
 }
 
-.overlay-text {
+.overlay-box {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
-    color: #4a3b2c;
     padding: 20px 30px;
     border: 1px solid #e0cfa0;
-    border-radius: 12px;
-    background: white;
+    border-radius: 14px;
+    background: #ffffff;
 }
 </style>
 
 </body>
+</html>
