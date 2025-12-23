@@ -5,167 +5,183 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engagement Invitation | Saurav & Adharika</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Wedding Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
+    background: #fbf7ef;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(#fffaf0, #fdf6e3);
-    color: #4a3b2c;
+    color: #3f4a3c;
     text-align: center;
-    overflow-x: hidden;
 }
 
-.container {
-    max-width: 900px;
+.wrapper {
+    max-width: 480px;
     margin: auto;
-    padding: 40px 20px;
+    background: #f6f9f4;
 }
 
-.divine {
+/* HERO */
+.hero {
+    padding: 40px 25px 30px;
+}
+
+.hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    margin-bottom: 30px;
-    animation: fadeIn 2s ease;
-}
-
-.hosts {
-    font-size: 18px;
-    margin-bottom: 50px;
-    animation: fadeIn 2.5s ease;
-}
-
-.names {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+    font-size: 34px;
+    color: #3c5a46;
     margin-bottom: 20px;
 }
 
-.name {
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    color: #5a4a3a;
+.hero img {
+    width: 100%;
+    border-radius: 14px;
 }
 
-.details {
-    font-size: 16px;
-    margin-top: 6px;
-}
-
+/* CONTENT */
 .section {
-    margin: 45px 0;
+    padding: 35px 30px;
+}
+
+.divine {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #5a6f61;
+    margin-bottom: 20px;
+}
+
+.names {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #2f4f3b;
+    margin: 20px 0;
+}
+
+.parents {
+    font-size: 14px;
+    color: #5c6b5f;
+    line-height: 1.6;
 }
 
 .card {
-    padding: 20px 30px;
-    border: 1px solid #e0cfa0;
+    background: #eef5ef;
     border-radius: 14px;
-    background: rgba(255,255,255,0.75);
-    display: inline-block;
-    min-width: 260px;
+    padding: 22px;
+    margin: 20px 0;
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #3c5a46;
+    margin-bottom: 10px;
 }
 
 .footer {
-    margin-top: 60px;
-    font-size: 15px;
+    padding: 30px 20px 40px;
+    font-size: 13px;
+    color: #5c6b5f;
 }
 
-/* Floating hearts */
-.heart-balloon {
+/* Overlay */
+#startOverlay {
     position: fixed;
-    font-size: 24px;
-    animation: floatUp 2.5s ease-out forwards;
-    pointer-events: none;
+    inset: 0;
+    background: #f6f9f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 9999;
 }
 
+.overlay-box {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    padding: 26px 34px;
+    background: white;
+    border-radius: 16px;
+    color: #3c5a46;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    font-size: 26px;
+    animation: floatUp 2.8s ease-out forwards;
+    pointer-events: none;
+    z-index: 10000;
+}
+
 @keyframes floatUp {
-    from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-160px) scale(1.5);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-    .names {
-        flex-direction: column;
-        gap: 20px;
-    }
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(-180px) scale(1.4); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background Music -->
 <audio id="bgMusic" src="bg-music.mp3" loop></audio>
 
-<!-- Start Overlay -->
 <div id="startOverlay">
-    <div class="overlay-box">A Joyful Celebration Awaits Your Gracious Presence</div>
+    <div class="overlay-box">
+        Begin the Celebration of Love and Togetherness
+    </div>
 </div>
 
-<div class="container" id="mainContent" style="display:none;">
+<div class="wrapper" id="mainContent" style="display:none;">
 
-    <div class="divine">With the Divine Grace of Lord Ganesha</div>
-
-    <div class="hosts">
-        <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br>
-        request your gracious presence at the engagement ceremony of their loving grandson
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Join Us for a Beautiful Engagement</h1>
+        <img src="hero.jpg" alt="Engagement">
     </div>
 
-    <div class="names">
-        <div>
-            <div class="name">Saurav Gupta</div>
-            <div class="details">(S/o Mrs. Premlata & Mr. Ramakant Gupta)</div>
+    <!-- INVITATION -->
+    <div class="section">
+        <div class="divine">With the Divine Grace of Lord Ganesha</div>
+
+        <p>
+            <strong>Smt. Prema Devi & Sh. Mahaveer Prasad Gupta</strong><br>
+            request your gracious presence at the engagement ceremony of their loving grandson
+        </p>
+
+        <div class="names">
+            Saurav Gupta 💍 Adharika Gupta
         </div>
 
-        <div style="font-size:28px;">❤️</div>
-
-        <div>
-            <div class="name">Adharika Gupta</div>
-            <div class="details">(D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)</div>
+        <div class="parents">
+            (S/o Mrs. Premlata & Mr. Ramakant Gupta)<br>
+            (D/o Smt. Kiran & Late Sh. Shiv Kumar Gupta)
         </div>
     </div>
 
+    <!-- DETAILS -->
     <div class="section">
         <div class="card">
-            <strong>Save the Date</strong><br><br>
+            <h3>Save the Date</h3>
             Monday, 2nd February 2026<br>
             6:00 PM
         </div>
-    </div>
 
-    <div class="section">
         <div class="card">
-            <strong>Venue</strong><br><br>
+            <h3>Venue</h3>
             Hotel Pleasant View<br>
             Manika Cinema Road,<br>
             Gandhi Nagar, Raebareli
         </div>
-    </div>
 
-    <div class="section">
         <div class="card">
-            <strong>R.S.V.P.</strong><br><br>
+            <h3>R.S.V.P.</h3>
             Gupta Family<br>
-            Mob: 98054-41823<br>
-            98164-23371
+            98054-41823 | 98164-23371
         </div>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
         <strong>Compliments From</strong><br>
         Sh. Kishori Lal Gupta<br>
@@ -180,51 +196,28 @@ body {
 const bgMusic = document.getElementById("bgMusic");
 const overlay = document.getElementById("startOverlay");
 const main = document.getElementById("mainContent");
-const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
-let started = false;
+const hearts = ["❤️","💖","💗","💕","💞"];
 
 overlay.addEventListener("click", () => {
-    bgMusic.volume = 0.4;
+    bgMusic.volume = 0.35;
     bgMusic.play();
-    started = true;
     overlay.style.display = "none";
     main.style.display = "block";
 });
 
 document.addEventListener("click", e => {
-    if (!started) return;
+    if (overlay.style.display !== "none") return;
 
     const heart = document.createElement("div");
-    heart.className = "heart-balloon";
+    heart.className = "heart";
     heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = e.clientX + "px";
     heart.style.top = e.clientY + "px";
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 2500);
+    setTimeout(() => heart.remove(), 2800);
 });
 </script>
-
-<style>
-#startOverlay {
-    position: fixed;
-    inset: 0;
-    background: #fdf6e3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-}
-
-.overlay-box {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    padding: 20px 30px;
-    border: 1px solid #e0cfa0;
-    border-radius: 14px;
-    background: #ffffff;
-}
-</style>
 
 </body>
 </html>
