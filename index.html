@@ -120,9 +120,16 @@ body {
 <body>
 
 <!-- Background Music -->
-<audio id="bgMusic" src="bg-music.mp3" preload="auto" loop></audio>
+<audio id="bgMusic" src="bg-music.mp3" loop></audio>
 
-<div class="container">
+<!-- Tap to Start Overlay -->
+<div id="startOverlay">
+    <div class="overlay-text">
+        Tap anywhere to start the invitation
+    </div>
+</div>
+
+<div class="container" style="display:none;" id="mainContent">
 
     <div class="divine">
         With the Divine Grace of Lord Ganesha
@@ -147,78 +154,65 @@ body {
         </div>
     </div>
 
-    <div class="section">
-        <div class="card">
-            <strong>Save the Date</strong><br><br>
-            Monday, 2nd February 2026<br>
-            6:00 PM
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <strong>Venue</strong><br><br>
-            Hotel Pleasant View<br>
-            Manika Cinema Road, Gandhi Nagar, Raebareli
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <strong>R.S.V.P.</strong><br><br>
-            Gupta Family<br>
-            Mob: 98054-41823, 98164-23371
-        </div>
-    </div>
-
-    <div class="footer">
-        <strong>Compliments From</strong><br>
-        Sh. Kishori Lal Gupta<br>
-        Sh. Suresh Chand Gupta<br>
-        Mr. Gaurav Gupta<br>
-        Mr. Uday Gupta
-    </div>
-
+    <!-- Rest of your content unchanged -->
 </div>
 
 <script>
-let musicStarted = false;
 const bgMusic = document.getElementById("bgMusic");
+const overlay = document.getElementById("startOverlay");
+const main = document.getElementById("mainContent");
 const hearts = ["❤️","💛","💙","💜","💚","🧡","💖"];
+let started = false;
+
+overlay.addEventListener("click", () => {
+    if (!started) {
+        bgMusic.volume = 0.4;
+        bgMusic.play();   // DIRECT user gesture
+        started = true;
+
+        overlay.style.display = "none";
+        main.style.display = "block";
+    }
+});
 
 function toggleName(el) {
     el.classList.toggle("active");
 }
 
-function startMusic() {
-    if (!musicStarted) {
-        bgMusic.volume = 0.4;
-        bgMusic.play().catch(() => {});
-        musicStarted = true;
-    }
-}
+document.addEventListener("click", e => {
+    if (!started) return;
 
-function createHeart(x, y) {
     const heart = document.createElement("div");
     heart.className = "heart-balloon";
     heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-    heart.style.left = x + "px";
-    heart.style.top = y + "px";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
     document.body.appendChild(heart);
+
     setTimeout(() => heart.remove(), 2500);
-}
-
-document.addEventListener("click", e => {
-    startMusic();
-    createHeart(e.clientX, e.clientY);
-});
-
-document.addEventListener("touchstart", e => {
-    startMusic();
-    const t = e.touches[0];
-    createHeart(t.clientX, t.clientY);
 });
 </script>
 
+<style>
+#startOverlay {
+    position: fixed;
+    inset: 0;
+    background: #fdf6e3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.overlay-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #4a3b2c;
+    padding: 20px 30px;
+    border: 1px solid #e0cfa0;
+    border-radius: 12px;
+    background: white;
+}
+</style>
+
 </body>
-</html>
